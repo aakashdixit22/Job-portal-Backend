@@ -1,6 +1,7 @@
 import express from 'express';
 import { connectToDb, getDb } from './db.js';
 import cors from 'cors';
+import { ObjectId } from 'mongodb';
 
 
 const app = express()
@@ -50,7 +51,26 @@ app.post('/post-job', async (req, res) => {
   });
 
   // GET all jobs
-  app.get('/jobs', async (req, res) => {
+  app.get('/all-jobs', async (req, res) => {
     const jobs = await jobCollection.find({}).toArray();
     res.send(jobs);
   });
+
+  app.get('/myJobs/:email', async (req, res) => {
+    const email = req.params.email;
+    const jobs = await jobCollection.find({ postedBy: email }).toArray();
+    res.send(jobs);
+  } );
+  //delete the job
+  app.delete('/delete-job/:jobId', async (req, res) => {
+    const id = req.params.jobId;
+    const result=await db.collection('jobs').deleteOne({_id:new ObjectId(id)});
+    if(result){
+      res.status(200).send({message:"Job deleted successfully"});
+    }
+    else{
+      res.status(404).send({message:"Internal Server Error"});
+    }
+  }
+  );
+

@@ -3,7 +3,8 @@ import env from "dotenv"
 let dbConnection;
 env.config()
 
-const url = process.env.MONGO_URL
+// const url = process.env.MONGO_URL;
+const url = "mongodb://localhost:27017/"
 export async function connectToDb(cb) {
     try {
         const client = await MongoClient.connect(url);

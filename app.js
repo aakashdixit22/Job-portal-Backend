@@ -4,6 +4,7 @@ import dbConnection from "./config/db.js";
 import jobRoutes from "./routes/jobs.js";
 import emailRoutes from "./routes/email.js";
 import authRoutes from "./routes/auth.js";
+import jobApplyRoutes from "./routes/apply.js";
 
 
 const app = express();
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use("/api/jobs", jobRoutes);
 app.use("/api/subscribers", emailRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/jobApply", jobApplyRoutes);
 
 
 

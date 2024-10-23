@@ -40,11 +40,38 @@ const upload = multer({ storage: storage });
 //     }
 // });
 // Apply for a job
+// router.post("/apply/:jobId", upload.single('resume'), async (req, res) => {
+//     try {
+//         const { name, email, phone } = req.body;
+//         const jobId = req.params.jobId;
+
+//         // Access the uploaded file's buffer (binary data)
+//         const resumeFileBuffer = req.file.buffer;
+
+//         // Create a new job application
+//         const application = new Application({
+//             jobId,
+//             applicantName: name,
+//             applicantEmail: email,
+//             applicantPhone: phone,
+//             resume: resumeFileBuffer, // store the file binary data (Buffer)
+//         });
+
+//         const savedApplication = await application.save();
+//         res.status(200).send({ message: "Application submitted successfully", savedApplication });
+//     } catch (error) {
+//         return res.status(500).send({
+//             message: "Internal Server Error",
+//             status: false,
+//             error: error.message
+//         });
+//     }
+// });
 router.post("/apply/:jobId", upload.single('resume'), async (req, res) => {
     try {
-        const { name, email, phone } = req.body;
+        const { name, email, phone, coverLetter } = req.body;
         const jobId = req.params.jobId;
-
+        console.log(name, email, phone, coverLetter);
         // Access the uploaded file's buffer (binary data)
         const resumeFileBuffer = req.file.buffer;
 
@@ -55,6 +82,7 @@ router.post("/apply/:jobId", upload.single('resume'), async (req, res) => {
             applicantEmail: email,
             applicantPhone: phone,
             resume: resumeFileBuffer, // store the file binary data (Buffer)
+            coverLetter:coverLetter// store the cover letter text
         });
 
         const savedApplication = await application.save();
@@ -67,6 +95,7 @@ router.post("/apply/:jobId", upload.single('resume'), async (req, res) => {
         });
     }
 });
+
 
 // // Retrieve jobs that a specific user has applied for
 // router.get("/my-applications/:email",authMiddleware, async (req, res) => {

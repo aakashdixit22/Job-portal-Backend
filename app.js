@@ -5,6 +5,7 @@ import jobRoutes from "./routes/jobs.js";
 import emailRoutes from "./routes/email.js";
 import authRoutes from "./routes/auth.js";
 import jobApplyRoutes from "./routes/apply.js";
+import newsRoutes from "./routes/news.js";
 
 
 const app = express();
@@ -14,6 +15,7 @@ app.use("/api/jobs", jobRoutes);
 app.use("/api/subscribers", emailRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/jobApply", jobApplyRoutes);
+app.use("/api/news", newsRoutes);
 
 
 

@@ -6,6 +6,7 @@ import emailRoutes from "./routes/email.js";
 import authRoutes from "./routes/auth.js";
 import jobApplyRoutes from "./routes/apply.js";
 import newsRoutes from "./routes/news.js";
+import contactRoutes from "./routes/contact.js"
 
 
 const app = express();
@@ -16,6 +17,7 @@ app.use("/api/subscribers", emailRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/jobApply", jobApplyRoutes);
 app.use("/api/news", newsRoutes);
+app.use("/api/contact", contactRoutes);
 
 
 
@@ -34,3 +36,4 @@ app.get("/", (req, res) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+

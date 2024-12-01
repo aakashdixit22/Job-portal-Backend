@@ -9,7 +9,8 @@ import newsRoutes from "./routes/news.js";
 import contactRoutes from "./routes/contact.js";
 import cron from "node-cron";
 import axios from "axios";
-
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -40,7 +41,7 @@ app.get("/api/keepalive", (req, res) => {
 cron.schedule("*/10 * * * *", async () => {
   try {
     console.log("Pinging /api/keepalive to keep the server alive...");
-    const response = await axios.get("http://localhost:5000/api/keepalive"); 
+    const response = await axios.get(`${process.env.BACKEND_URL}/api/keepalive`); 
     console.log("Response from /api/keepalive:", response.data);
   } catch (error) {
     console.error("Error while pinging /api/keepalive:", error.message);

@@ -1,11 +1,11 @@
 import Subscriber from '../models/Subscriber.js';
 import express from 'express';
 import transporter from '../service/transporter.js';
-import { authMiddleware } from '../middleware/authMiddleware.js';
+
 const router = express.Router();
 
 
-router.post("/subscribe",authMiddleware, async (req, res) => {
+router.post("/subscribe", async (req, res) => {
   const { email } = req.body;
 
   // Basic email validation (optional since you have schema validation)

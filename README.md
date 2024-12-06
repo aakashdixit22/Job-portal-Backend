@@ -1,7 +1,8 @@
 # Talx-Backend 🚀
 
 **Visit Talx**: [https://talx.vercel.app/](https://talx.vercel.app/) 
-This is the backend API for the **Job Portal** on the Talx Website. It provides job management, authentication, subscription, news integration, contact functionalities, and job application handling. The backend is built using **Node.js** and **Express.js** with a MongoDB database.
+
+**Talx-Backend** is the backend API for the **Job Portal** on the Talx Website. It provides job management, authentication, subscription, news integration, contact functionalities, and job application handling. The backend is built using **Node.js** and **Express.js** with a MongoDB database.
 
 ---
 
